@@ -36,10 +36,6 @@ public class Motorista extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,18 +48,6 @@ public class Motorista extends javax.swing.JFrame {
         });
 
         jPanel2.setLayout(new java.awt.GridLayout(2, 2, 15, 15));
-
-        jButton3.setText("jButton3");
-        jPanel2.add(jButton3);
-
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1);
-
-        jButton2.setText("jButton2");
-        jPanel2.add(jButton2);
-
-        jButton4.setText("jButton4");
-        jPanel2.add(jButton4);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -89,8 +73,8 @@ public class Motorista extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228)
                 .addComponent(btnVoltar)
                 .addContainerGap())
         );
@@ -168,10 +152,6 @@ public class Motorista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
