@@ -15,7 +15,7 @@ public class FabricaConexao {
             //fazendo a chamada para carregar o drive do MySql
             Class.forName("com.mysql.jdbc.Driver");
 //            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            String url = ("jdbc:mysql://127.0.0.1/poe");
+            String url = ("jdbc:mysql://127.0.0.1/locadora");
             //estabelecendo conexão com o caminho, usuário e senha
             con = DriverManager.getConnection(url, "root", "");
         } catch (ClassNotFoundException ex) {
