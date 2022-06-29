@@ -46,8 +46,8 @@ public class TelaCliente extends javax.swing.JFrame {
         txtObs = new javax.swing.JTextArea();
         txtEndereco = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnFem = new javax.swing.JRadioButton();
+        btnMas = new javax.swing.JRadioButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
 
@@ -92,11 +92,11 @@ public class TelaCliente extends javax.swing.JFrame {
         txtObs.setRows(5);
         jScrollPane1.setViewportView(txtObs);
 
-        grupoSexo.add(jRadioButton1);
-        jRadioButton1.setText("Feminino");
+        grupoSexo.add(btnFem);
+        btnFem.setText("Feminino");
 
-        grupoSexo.add(jRadioButton2);
-        jRadioButton2.setText("Masculino");
+        grupoSexo.add(btnMas);
+        btnMas.setText("Masculino");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,9 +140,9 @@ public class TelaCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton1)
+                                .addComponent(btnFem)
                                 .addGap(4, 4, 4)
-                                .addComponent(jRadioButton2))
+                                .addComponent(btnMas))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
@@ -166,8 +166,8 @@ public class TelaCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(btnFem)
+                    .addComponent(btnMas))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -220,7 +220,13 @@ public class TelaCliente extends javax.swing.JFrame {
         cliente.setEndereco(txtEndereco.getText());
         cliente.setNome(txtNome.getText());
         cliente.setObs(txtObs.getText());
-        cliente.setSexo(grupoSexo.getSelection().toString());
+        String sexo;
+        if (btnFem.isSelected()){
+            sexo = "Feminino";
+        } else {
+            sexo = "Masculino";
+        }
+        cliente.setSexo(sexo);
         DAOCliente insereDados = new DAOCliente();
         if(insereDados.insereCliente(cliente))
         {
@@ -274,8 +280,10 @@ public class TelaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JRadioButton btnFem;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnListar;
+    private javax.swing.JRadioButton btnMas;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup grupoSexo;
@@ -286,8 +294,6 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
