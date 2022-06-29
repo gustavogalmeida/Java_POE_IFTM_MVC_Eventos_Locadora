@@ -15,12 +15,12 @@ import java.util.logging.Logger;
  *
  * @author Gustavo Almeida
  */
-public class Motorista extends javax.swing.JFrame {
+public class TelaMotorista extends javax.swing.JFrame {
 
     /**
      * Creates new form Motorista
      */
-    public Motorista() {
+    public TelaMotorista() {
         initComponents();
     }
 
@@ -207,7 +207,7 @@ public class Motorista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Principal p = new Principal();
+        TelaPrincipal p = new TelaPrincipal();
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -237,20 +237,21 @@ public class Motorista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Motorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Motorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Motorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Motorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Motorista().setVisible(true);
+                new TelaMotorista().setVisible(true);
             }
         });
     }
@@ -262,7 +263,7 @@ public class Motorista extends javax.swing.JFrame {
         try {
             date = formatado.parse(data);
         } catch (ParseException ex) {
-            Logger.getLogger(Motorista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaMotorista.class.getName()).log(Level.SEVERE, null, ex);
         }
         return date;
     }

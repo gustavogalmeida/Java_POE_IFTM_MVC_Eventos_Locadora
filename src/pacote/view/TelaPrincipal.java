@@ -8,12 +8,12 @@ package pacote.view;
  *
  * @author Gustavo Almeida
  */
-public class Principal extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    public TelaPrincipal() {
         initComponents();
     }
 
@@ -119,19 +119,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCacambaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCacambaActionPerformed
-        Cacamba c = new Cacamba();
+        TelaCacamba c = new TelaCacamba();
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCacambaActionPerformed
 
     private void btnMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotoristaActionPerformed
-        Motorista m = new Motorista();
+        TelaMotorista m = new TelaMotorista();
         m.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMotoristaActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        Cliente c = new Cliente ();
+        TelaCliente c = new TelaCliente ();
         c.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnClienteActionPerformed
@@ -153,20 +153,21 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new TelaPrincipal().setVisible(true);
             }
         });
     }

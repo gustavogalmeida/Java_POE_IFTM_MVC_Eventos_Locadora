@@ -3,17 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pacote.view;
+import javax.swing.JOptionPane;
+import pacote.DAO.DAOCliente;
+import pacote.dominio.Cliente;
+
 
 /**
  *
  * @author Gustavo Almeida
  */
-public class Cliente extends javax.swing.JFrame {
+public class TelaCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public TelaCliente() {
         initComponents();
     }
 
@@ -60,7 +64,7 @@ public class Cliente extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cliente");
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         btnListar.setText("Listar");
         jPanel2.add(btnListar);
@@ -95,6 +99,11 @@ public class Cliente extends javax.swing.JFrame {
         jRadioButton2.setText("Masculino");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +196,7 @@ public class Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Principal p = new Principal();
+        TelaPrincipal p = new TelaPrincipal();
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -196,12 +205,38 @@ public class Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+    private void limparCampos(){
+        txtEndereco.setText("");
+        txtNome.setText("");
+        txtObs.setText("");
+        grupoSexo.clearSelection();
+    }
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtEndereco.setText("");
         txtNome.setText("");
         txtObs.setText("");
         grupoSexo.clearSelection();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.setEndereco(txtEndereco.getText());
+        cliente.setNome(txtNome.getText());
+        cliente.setObs(txtObs.getText());
+        cliente.setSexo(grupoSexo.getSelection().toString());
+        DAOCliente insereDados = new DAOCliente();
+        if(insereDados.insereCliente(cliente))
+        {
+            JOptionPane.showMessageDialog(null, "Registro cadastrado com sucesso!");
+            limparCampos();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar registro, tente novamente.");
+            limparCampos();
+        }
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,20 +255,21 @@ public class Cliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cliente().setVisible(true);
+                new TelaCliente().setVisible(true);
             }
         });
     }
