@@ -9,8 +9,16 @@ import java.util.Date;
 public class Motorista {
     private String nome;
     private String cnh;
-    private Date nascimento;
     private String placa;
+    private String sexo;
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
     public String getNome() {
         return nome;
@@ -26,14 +34,6 @@ public class Motorista {
 
     public void setCnh(String cnh) {
         this.cnh = cnh;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
     }
 
     public String getPlaca() {
