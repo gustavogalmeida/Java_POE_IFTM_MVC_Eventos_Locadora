@@ -5,11 +5,20 @@ package pacote.dominio;
  * @author Gustavo Almeida
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String endereco;
     private String sexo;
     private String obs;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

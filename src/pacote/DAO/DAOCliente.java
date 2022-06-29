@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pacote.DAO.FabricaConexao;
 import pacote.dominio.Cliente;
@@ -55,5 +56,36 @@ public class DAOCliente {
             fechar();
         }
         return false;
+    }
+    public  ArrayList<Cliente> selecionarTodosRegistros()
+    {
+        conectar();
+        //interface utilizada pra guardar dados vindos de um banco de dados
+        ResultSet rs;
+        String sql = "SELECT * FROM CLIENTE";
+        //lista que conterá todas as informações de pessoas no banco de dados
+        ArrayList<Cliente> listaCliente = new ArrayList();
+        try{
+            comando = con.prepareStatement(sql);
+            rs = comando.executeQuery();
+            while(rs.next())
+            {
+                Cliente cliente = new Cliente();
+                cliente.setNome(rs.getString("NOME"));
+                cliente.setEndereco(rs.getString("ENDERECO"));
+                cliente.setSexo(rs.getString("SEXO"));
+                cliente.setObs(rs.getString("OBS"));
+                cliente.setId(rs.getInt("ID"));
+                listaCliente.add(cliente);
+            }
+            fechar();
+            return listaCliente;
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, "Erro ao buscar registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+            fechar();
+            return null;
+        }
+            
     }
 }

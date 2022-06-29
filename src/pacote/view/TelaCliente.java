@@ -67,6 +67,11 @@ public class TelaCliente extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnListar);
 
         btnAlterar.setText("Alterar");
@@ -240,6 +245,12 @@ public class TelaCliente extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        VisuCliente v = new VisuCliente();
+        v.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnListarActionPerformed
 
     /**
      * @param args the command line arguments
