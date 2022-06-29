@@ -17,7 +17,7 @@ public class FabricaConexao {
 //            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             String url = ("jdbc:mysql://127.0.0.1/locadora");
             //estabelecendo conexão com o caminho, usuário e senha
-            con = DriverManager.getConnection(url, "root", "root");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FabricaConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
