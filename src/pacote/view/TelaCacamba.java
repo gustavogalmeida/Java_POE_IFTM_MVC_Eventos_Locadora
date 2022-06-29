@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pacote.view;
-
+import javax.swing.JOptionPane;
+import pacote.DAO.DAOCacamba;
+import pacote.dominio.Cacamba;
 /**
  *
  * @author Gustavo Almeida
@@ -33,7 +35,6 @@ public class TelaCacamba extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtValor = new javax.swing.JSpinner();
         txtSerie = new javax.swing.JTextField();
         checkLocada = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
@@ -42,6 +43,7 @@ public class TelaCacamba extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        txtValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +80,11 @@ public class TelaCacamba extends javax.swing.JFrame {
         jPanel2.add(jButton2);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,15 +114,13 @@ public class TelaCacamba extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                                 .addComponent(btnVoltar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtValor)
                                     .addComponent(comboTamanho, 0, 153, Short.MAX_VALUE)
                                     .addComponent(txtSerie)))))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,7 +146,7 @@ public class TelaCacamba extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnSalvar)
@@ -171,13 +176,36 @@ public class TelaCacamba extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
     private void limparCampos(){
         txtSerie.setText("");
-        txtValor.setValue(0);
+        txtValor.setText("");
         checkLocada.setSelected(false);
         comboTamanho.setSelectedItem("  ");
     }
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Cacamba cacamba = new Cacamba();
+        if (checkLocada.isSelected()){
+            cacamba.setLocada(true);
+        } else {
+            cacamba.setLocada(false);
+        }
+        cacamba.setNserie(txtSerie.getText());
+        cacamba.setTamanho(comboTamanho.getSelectedItem().toString());
+        cacamba.setValor(Float.parseFloat(txtValor.getText()));
+        DAOCacamba insereDados = new DAOCacamba();
+        if(insereDados.insereCacamba(cacamba))
+        {
+            JOptionPane.showMessageDialog(null, "Registro cadastrado com sucesso!");
+            limparCampos();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar registro, tente novamente.");
+            limparCampos();
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +259,6 @@ public class TelaCacamba extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtSerie;
-    private javax.swing.JSpinner txtValor;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
