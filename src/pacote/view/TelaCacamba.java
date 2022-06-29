@@ -169,12 +169,14 @@ public class TelaCacamba extends javax.swing.JFrame {
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+    private void limparCampos(){
         txtSerie.setText("");
         txtValor.setValue(0);
         checkLocada.setSelected(false);
         comboTamanho.setSelectedItem("  ");
+    }
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     /**

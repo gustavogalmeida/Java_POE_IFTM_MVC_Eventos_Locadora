@@ -211,13 +211,15 @@ public class TelaMotorista extends javax.swing.JFrame {
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+    private void limparCampos(){
         txtNome.setText("");;
         txtPlaca.setText("");
         grupoSexo.clearSelection();
         cnhGrupoBCDE.clearSelection();
         checkA.setSelected(false);
+    }
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     /**

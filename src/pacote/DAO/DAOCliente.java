@@ -3,7 +3,9 @@ package pacote.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import pacote.DAO.FabricaConexao;
 import pacote.dominio.Cliente;
 
 /**

@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class FabricaConexao {
     
     public static Connection conexao(){
@@ -13,11 +12,12 @@ public class FabricaConexao {
         Connection con = null;
         try {
             //fazendo a chamada para carregar o drive do MySql
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 //            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             String url = ("jdbc:mysql://127.0.0.1/locadora");
             //estabelecendo conexão com o caminho, usuário e senha
-            con = DriverManager.getConnection(url, "root", "");
+            con = DriverManager.getConnection(url, "root", "root");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FabricaConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -25,5 +25,5 @@ public class FabricaConexao {
             Logger.getLogger(FabricaConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return con;
-    }  
+    }    
 }

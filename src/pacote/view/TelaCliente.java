@@ -212,10 +212,7 @@ public class TelaCliente extends javax.swing.JFrame {
         grupoSexo.clearSelection();
     }
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        txtEndereco.setText("");
-        txtNome.setText("");
-        txtObs.setText("");
-        grupoSexo.clearSelection();
+        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
