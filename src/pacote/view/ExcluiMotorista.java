@@ -5,6 +5,7 @@
 package pacote.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pacote.DAO.DAOMotorista;
 import pacote.dominio.Motorista;
@@ -56,14 +57,14 @@ public class ExcluiMotorista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CNH", "Placa", "Sexo"
+                "ID", "Nome"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -72,6 +73,11 @@ public class ExcluiMotorista extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaMotorista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMotoristaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaMotorista);
@@ -123,6 +129,27 @@ public class ExcluiMotorista extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaMotoristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMotoristaMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse registro?");
+        if(resposta == 0)
+        {
+            int linha = tabelaMotorista.getSelectedRow();
+            Integer id = (Integer)tabelaMotorista.getValueAt(linha, 0);
+            DAOMotorista remover = new DAOMotorista();
+            if(remover.removeMotorista(id))
+            {
+                JOptionPane.showMessageDialog(null, "Registro removido com sucesso!");
+                DefaultTableModel modeloRemoveLinha = (DefaultTableModel)tabelaMotorista.getModel(); 
+                modeloRemoveLinha.removeRow(tabelaMotorista.getSelectedRow());  
+                tabelaMotorista.setModel(modeloRemoveLinha);  
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro. Tente novamente.");
+            }
+        }
+    }//GEN-LAST:event_tabelaMotoristaMouseClicked
 
     /**
      * @param args the command line arguments
