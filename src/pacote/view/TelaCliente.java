@@ -247,7 +247,7 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        VisuCliente v = new VisuCliente();
+        ListarCliente v = new ListarCliente();
         v.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnListarActionPerformed

@@ -13,12 +13,12 @@ import pacote.dominio.Cliente;
  *
  * @author Gustavo Almeida
  */
-public class VisuCliente extends javax.swing.JFrame {
+public class ListarCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form VisuCliente
      */
-    public VisuCliente() {
+    public ListarCliente() {
         initComponents();
         DAOCliente dadosCliente = new DAOCliente();
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
@@ -56,10 +56,7 @@ public class VisuCliente extends javax.swing.JFrame {
 
         tabelaDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Endereço", "Sexo", "OBS"
@@ -140,20 +137,21 @@ public class VisuCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisuCliente().setVisible(true);
+                new ListarCliente().setVisible(true);
             }
         });
     }
