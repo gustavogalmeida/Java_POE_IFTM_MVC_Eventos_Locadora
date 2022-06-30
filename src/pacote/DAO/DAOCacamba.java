@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pacote.DAO.FabricaConexao;
 import pacote.dominio.Cacamba;
-import pacote.DAO.DAOCacamba;
 
 
 /**
@@ -37,7 +36,7 @@ public class DAOCacamba {
         }
     }
     
-    public boolean insereCacamba(Cacamba cacamba){
+    public boolean insereCacamba(Cacamba c1){
         
         conectar();
         String sql = "INSERT INTO cacamba(tamanho, nserie, "
@@ -45,10 +44,10 @@ public class DAOCacamba {
           
         try{
             comando = con.prepareStatement(sql);
-            comando.setString(1, cacamba.getTamanho());
-            comando.setString(2, cacamba.getNserie());
-            comando.setFloat(3, cacamba.getValor());
-            comando.setBoolean(4, cacamba.isLocada());
+            comando.setString(1, c1.getTamanho());
+            comando.setString(2, c1.getNserie());
+            comando.setFloat(3, c1.getValor());
+            comando.setBoolean(4, c1.isLocada());
             comando.execute();
             return true;
         }catch(SQLException e){

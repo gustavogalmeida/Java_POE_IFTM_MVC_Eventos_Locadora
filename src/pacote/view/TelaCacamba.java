@@ -203,17 +203,17 @@ public class TelaCacamba extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Cacamba cacamba = new Cacamba();
+        Cacamba c1 = new Cacamba();
         if (checkLocada.isSelected()){
-            cacamba.setLocada(true);
+            c1.setLocada(true);
         } else {
-            cacamba.setLocada(false);
+            c1.setLocada(false);
         }
-        cacamba.setNserie(txtSerie.getText());
-        cacamba.setTamanho(comboTamanho.getSelectedItem().toString());
-        cacamba.setValor(Float.parseFloat(txtValor.getText()));
-        DAOCacamba insereDados = new DAOCacamba();
-        if(insereDados.insereCacamba(cacamba))
+        c1.setNserie(txtSerie.getText());
+        c1.setTamanho(comboTamanho.getSelectedItem().toString());
+        c1.setValor(Float.parseFloat(txtValor.getText()));
+        DAOCacamba formaDao = new DAOCacamba();
+        if(formaDao.insereCacamba(c1))
         {
             JOptionPane.showMessageDialog(null, "Registro cadastrado com sucesso!");
             limparCampos();
