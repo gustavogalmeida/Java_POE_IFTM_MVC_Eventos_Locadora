@@ -22,11 +22,11 @@ public class ExcluiCacamba extends javax.swing.JFrame {
     public ExcluiCacamba() {
         initComponents();
         DAOCacamba dadosCacamba = new DAOCacamba();
-        ArrayList<Cacamba> listaPessoas = new ArrayList();
-        listaPessoas = dadosCacamba.selecionarTodosRegistros();
+        ArrayList<Cacamba> listaCacamba = new ArrayList();
+        listaCacamba = dadosCacamba.selecionarTodosRegistros();
         //criando um modelo para a JTable
         DefaultTableModel modelo = (DefaultTableModel) tabelaCacamba.getModel();
-        for(Cacamba cacamba : listaPessoas)
+        for(Cacamba cacamba : listaCacamba)
         {
             Object[] dados = {cacamba.getId(), cacamba.getNserie()};
             modelo.addRow(dados);

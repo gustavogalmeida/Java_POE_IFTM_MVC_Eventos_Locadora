@@ -89,7 +89,7 @@ public class DAOCacamba {
         }
             
     }
-    public boolean removeMotorista (Integer id){
+    public boolean removeCacamba (Integer id){
         conectar();
         String sql = "DELETE FROM CACAMBA WHERE ID=?";
         try{
