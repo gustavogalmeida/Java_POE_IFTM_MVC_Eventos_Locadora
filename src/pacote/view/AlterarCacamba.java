@@ -32,8 +32,10 @@ public class AlterarCacamba extends javax.swing.JFrame {
                 cacamba.getId(), 
                 cacamba.getTamanho(),
                 cacamba.getNserie(),
-                cacamba.isLocada(), 
-                cacamba.getValor()};
+                cacamba.getValor(),
+                cacamba.isLocada()
+            }; 
+
             modelo.addRow(dados);
         }
     }

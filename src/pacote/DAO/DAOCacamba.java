@@ -72,11 +72,11 @@ public class DAOCacamba {
             while(rs.next())
             {
                 Cacamba cacamba = new Cacamba();
+                cacamba.setId(rs.getInt("ID"));
                 cacamba.setTamanho(rs.getString("TAMANHO"));
                 cacamba.setNserie(rs.getString("NSERIE"));
-                cacamba.setLocada(rs.getBoolean("LOCADA"));
                 cacamba.setValor(rs.getFloat("VALOR"));
-                cacamba.setId(rs.getInt("ID"));
+                cacamba.setLocada(rs.getBoolean("LOCADA"));
                 listaCacamba.add(cacamba);
             }
             fechar();
