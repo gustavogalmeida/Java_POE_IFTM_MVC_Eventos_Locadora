@@ -29,13 +29,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        btnCacamba = new javax.swing.JButton();
-        btnMotorista = new javax.swing.JButton();
-        btnCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menuCacamba = new javax.swing.JMenuItem();
+        menuMotorista = new javax.swing.JMenuItem();
+        menuCliente = new javax.swing.JMenuItem();
         btnOpcoes = new javax.swing.JMenu();
         btnSwing = new javax.swing.JMenuItem();
         btnSobre = new javax.swing.JMenuItem();
@@ -44,40 +44,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 3, 5, 0));
-
-        btnCacamba.setBackground(new java.awt.Color(255, 255, 255));
-        btnCacamba.setForeground(new java.awt.Color(0, 0, 0));
-        btnCacamba.setText("Caçambas");
-        btnCacamba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCacambaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCacamba);
-
-        btnMotorista.setBackground(new java.awt.Color(255, 255, 255));
-        btnMotorista.setForeground(new java.awt.Color(0, 0, 0));
-        btnMotorista.setText("Motoristas");
-        btnMotorista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMotoristaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnMotorista);
-
-        btnCliente.setBackground(new java.awt.Color(255, 255, 255));
-        btnCliente.setForeground(new java.awt.Color(0, 0, 0));
-        btnCliente.setText("Clientes");
-        btnCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCliente);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -93,22 +59,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Cadastro");
+
+        menuCacamba.setText("Caçamba");
+        menuCacamba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCacambaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuCacamba);
+
+        menuMotorista.setText("Motorista");
+        menuMotorista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMotoristaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuMotorista);
+
+        menuCliente.setText("Cliente");
+        menuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuCliente);
+
+        jMenuBar1.add(jMenu1);
 
         btnOpcoes.setText("Opções");
         btnOpcoes.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +143,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -167,24 +157,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
-
-    private void btnCacambaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCacambaActionPerformed
-        TelaCacamba c = new TelaCacamba();
-        c.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnCacambaActionPerformed
-
-    private void btnMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotoristaActionPerformed
-        TelaMotorista m = new TelaMotorista();
-        m.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnMotoristaActionPerformed
-
-    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        TelaCliente c = new TelaCliente ();
-        c.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnSwingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwingActionPerformed
         JOptionPane.showMessageDialog(null, 
@@ -215,6 +187,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 + "\nTodos direitos reservados."
                 );
     }//GEN-LAST:event_btnSobreActionPerformed
+
+    private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
+        TelaCliente c = new TelaCliente ();
+        c.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuClienteActionPerformed
+
+    private void menuMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMotoristaActionPerformed
+        TelaMotorista m = new TelaMotorista();
+        m.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuMotoristaActionPerformed
+
+    private void menuCacambaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCacambaActionPerformed
+        TelaCacamba c = new TelaCacamba();
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuCacambaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,17 +244,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCacamba;
-    private javax.swing.JButton btnCliente;
-    private javax.swing.JButton btnMotorista;
     private javax.swing.JMenu btnOpcoes;
     private javax.swing.JMenuItem btnSair;
     private javax.swing.JMenuItem btnSobre;
     private javax.swing.JMenuItem btnSwing;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem menuCacamba;
+    private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuMotorista;
     // End of variables declaration//GEN-END:variables
 }
