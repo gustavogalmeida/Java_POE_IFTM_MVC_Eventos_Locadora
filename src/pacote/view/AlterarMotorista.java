@@ -13,29 +13,14 @@ import pacote.dominio.Motorista;
  *
  * @author Gustavo Almeida
  */
-public class ListarMotorista extends javax.swing.JFrame {
+public class AlterarMotorista extends javax.swing.JFrame {
 
     /**
      * Creates new form ListarMotorista
      */
-    public ListarMotorista() {
+    public AlterarMotorista() {
         initComponents();
-        DAOMotorista dadosMotorista = new DAOMotorista();
-        ArrayList<Motorista> listaMotorista= new ArrayList<Motorista>();
-        listaMotorista = dadosMotorista.selecionarTodosRegistros();
-        //criando um modelo para a JTable
-        DefaultTableModel modelo = (DefaultTableModel) tabelaMotorista.getModel();
-        for(Motorista motorista : listaMotorista)
-        {
-            Object[] dados = 
-            {
-                motorista.getNome(), 
-                motorista.getCnh(), 
-                motorista.getPlaca(), 
-                motorista.getSexo()
-            };
-            modelo.addRow(dados);
-        }
+        
     }
 
     /**
@@ -57,7 +42,7 @@ public class ListarMotorista extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Lista de Motoristas");
+        jLabel1.setText("Alterar motoristas");
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,20 +141,23 @@ public class ListarMotorista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarMotorista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarMotorista().setVisible(true);
+                new AlterarMotorista().setVisible(true);
             }
         });
     }

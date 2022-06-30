@@ -126,7 +126,7 @@
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Lista de Ca&#xe7;ambas"/>
+            <Property name="text" type="java.lang.String" value="Alterar ca&#xe7;ambas"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -4,6 +4,11 @@
  */
 package pacote.view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import pacote.DAO.DAOCacamba;
+import pacote.dominio.Cacamba;
+
 /**
  *
  * @author Gustavo Almeida
@@ -15,6 +20,22 @@ public class ListarCacamba extends javax.swing.JFrame {
      */
     public ListarCacamba() {
         initComponents();
+        DAOCacamba dadosCacamba = new DAOCacamba();
+        ArrayList<Cacamba> listaCacamba = new ArrayList<Cacamba>();
+        listaCacamba = dadosCacamba.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCacamba.getModel();
+        for(Cacamba cacamba : listaCacamba)
+        {
+            Object[] dados = 
+            {
+                cacamba.getTamanho(), 
+                cacamba.getNserie(), 
+                cacamba.getValor(), 
+                cacamba.isLocada()
+            };
+            modelo.addRow(dados);
+        }
     }
 
     /**
@@ -43,10 +64,7 @@ public class ListarCacamba extends javax.swing.JFrame {
 
         tabelaCacamba.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Tamnho", "Serie", "Valor", "Locada"
