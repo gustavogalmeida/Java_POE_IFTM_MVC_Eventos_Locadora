@@ -4,6 +4,8 @@
  */
 package pacote.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gustavo Almeida
@@ -32,14 +34,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnMotorista = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnOpcoes = new javax.swing.JMenu();
+        btnSwing = new javax.swing.JMenuItem();
+        btnSobre = new javax.swing.JMenuItem();
         btnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new java.awt.GridLayout(1, 3, 5, 0));
 
+        btnCacamba.setBackground(new java.awt.Color(255, 255, 255));
+        btnCacamba.setForeground(new java.awt.Color(0, 0, 0));
         btnCacamba.setText("Caçambas");
         btnCacamba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +59,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(btnCacamba);
 
+        btnMotorista.setBackground(new java.awt.Color(255, 255, 255));
+        btnMotorista.setForeground(new java.awt.Color(0, 0, 0));
         btnMotorista.setText("Motoristas");
         btnMotorista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +69,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(btnMotorista);
 
+        btnCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnCliente.setText("Clientes");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,8 +80,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.add(btnCliente);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Locação de Caçambas");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacote/img/Cacamba-Estacionaria2 .png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,8 +94,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -85,7 +105,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         btnOpcoes.setText("Opções");
@@ -94,6 +116,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnOpcoesActionPerformed(evt);
             }
         });
+
+        btnSwing.setText("Recursos utilizados");
+        btnSwing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSwingActionPerformed(evt);
+            }
+        });
+        btnOpcoes.add(btnSwing);
+
+        btnSobre.setText("Sobre");
+        btnSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSobreActionPerformed(evt);
+            }
+        });
+        btnOpcoes.add(btnSobre);
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +186,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnClienteActionPerformed
 
+    private void btnSwingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwingActionPerformed
+        JOptionPane.showMessageDialog(null, 
+            "TextField\n" +
+            "TextArea\n" +
+            "CompoBox\n" +
+            "RadioButton\n" +
+            "RadioButtonGroup\n" +
+            "CheckBox\n" +
+            "Table\n" +
+            "Button\n" +
+            "GridLayout\n" +
+            "MenuBar\n" +
+            "MenuItem\n" +
+            "JOptionPane");
+    }//GEN-LAST:event_btnSwingActionPerformed
+
+    private void btnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreActionPerformed
+        JOptionPane.showMessageDialog(null, 
+                "##################Trabalho final POE###################\n\n\n"
+                + "Descrição: Usar recursos apresentados anteriormente\n"
+                + "e implementar integração com MySQL, modelo de trabalho é CRUD\n\n"
+                + "Valor: 40 Pontos\n\n"
+                + "Professora: Lígia\n\n"
+                + "Aluno: Gustavo Almeida\n\n"
+                + "Tema escolhido: Locação de Caçambas\n\n"
+                + "Diretorio do projeto no GitHub:\ngithub.com/gustavogalmeida/Java_POE_IFTM_MVC_Eventos_Locadora.git\n\n"
+                + "\nTodos direitos reservados."
+                );
+    }//GEN-LAST:event_btnSobreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,7 +259,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMotorista;
     private javax.swing.JMenu btnOpcoes;
     private javax.swing.JMenuItem btnSair;
+    private javax.swing.JMenuItem btnSobre;
+    private javax.swing.JMenuItem btnSwing;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
