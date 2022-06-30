@@ -21,6 +21,16 @@ public class ExcluiMotorista extends javax.swing.JFrame {
      */
     public ExcluiMotorista() {
         initComponents();
+        DAOMotorista dadosCliente = new DAOMotorista();
+        ArrayList<Motorista> listaPessoas = new ArrayList();
+        listaPessoas = dadosCliente.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaMotorista.getModel();
+        for(Motorista motorista : listaPessoas)
+        {
+            Object[] dados = {motorista.getId(), motorista.getNome()};
+            modelo.addRow(dados);
+        }
         
     }
 
