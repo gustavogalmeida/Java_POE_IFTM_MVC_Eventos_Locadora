@@ -105,4 +105,25 @@ public class DAOCacamba {
         }
         return false;
     }
+    public boolean alteraCacamba(Cacamba cacamba){
+         conectar();
+         String sql = "UPDATE CACAMBA SET TAMANHO = ?, NSERIE = ?, VALOR = ?, LOCADA = ? "
+                 + "WHERE ID=?";
+         try{
+            comando = con.prepareStatement(sql);
+            comando.setString(1, cacamba.getTamanho());
+            comando.setString(2, cacamba.getNserie());
+            comando.setFloat(3, cacamba.getValor());
+            comando.setBoolean(4, cacamba.isLocada());
+            comando.setInt(5, cacamba.getId());
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Erro ao atualizar registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            fechar();
+        }
+         return false;
+    }
 }

@@ -4,6 +4,12 @@
  */
 package pacote.view;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pacote.DAO.DAOCacamba;
+import pacote.dominio.Cacamba;
+
 /**
  *
  * @author Gustavo Almeida
@@ -15,6 +21,21 @@ public class AlterarCacamba extends javax.swing.JFrame {
      */
     public AlterarCacamba() {
         initComponents();
+        DAOCacamba dadosCacamba = new DAOCacamba();
+        ArrayList<Cacamba> listaPessoas = new ArrayList();
+        listaPessoas = dadosCacamba.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCacamba.getModel();
+        for(Cacamba cacamba : listaPessoas)
+        {
+            Object[] dados = {
+                cacamba.getId(), 
+                cacamba.getTamanho(),
+                cacamba.getNserie(),
+                cacamba.isLocada(), 
+                cacamba.getValor()};
+            modelo.addRow(dados);
+        }
     }
 
     /**
@@ -46,14 +67,14 @@ public class AlterarCacamba extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tamnho", "Serie", "Valor", "Locada"
+                "id", "Tamnho", "Serie", "Valor", "Locada"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -62,6 +83,11 @@ public class AlterarCacamba extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCacamba.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaCacambaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCacamba);
@@ -114,6 +140,22 @@ public class AlterarCacamba extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaCacambaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCacambaMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente atualizar esse registro?");
+        if(resposta == 0)
+        {
+            Cacamba cacamba = new Cacamba();
+            int linha = tabelaCacamba.getSelectedRow();
+            cacamba.setId(Integer.parseInt(tabelaCacamba.getValueAt(linha, 0).toString()));
+            cacamba.setTamanho(tabelaCacamba.getValueAt(linha, 1).toString());
+            cacamba.setNserie(tabelaCacamba.getValueAt(linha, 2).toString());
+            cacamba.setValor(Float.parseFloat(tabelaCacamba.getValueAt(linha, 3).toString()));
+            cacamba.setLocada(Boolean.parseBoolean(tabelaCacamba.getValueAt(linha, 4).toString()));
+            new FormCacamba(cacamba).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_tabelaCacambaMouseClicked
 
     /**
      * @param args the command line arguments
