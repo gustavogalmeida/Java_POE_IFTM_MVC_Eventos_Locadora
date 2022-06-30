@@ -4,6 +4,12 @@
  */
 package pacote.view;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pacote.DAO.DAOCacamba;
+import pacote.dominio.Cacamba;
+
 /**
  *
  * @author Gustavo Almeida
@@ -15,6 +21,16 @@ public class ExcluiCacamba extends javax.swing.JFrame {
      */
     public ExcluiCacamba() {
         initComponents();
+        DAOCacamba dadosCacamba = new DAOCacamba();
+        ArrayList<Cacamba> listaPessoas = new ArrayList();
+        listaPessoas = dadosCacamba.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCacamba.getModel();
+        for(Cacamba cacamba : listaPessoas)
+        {
+            Object[] dados = {cacamba.getId(), cacamba.getNserie()};
+            modelo.addRow(dados);
+        }
     }
 
     /**
@@ -46,14 +62,14 @@ public class ExcluiCacamba extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tamnho", "Serie", "Valor", "Locada"
+                "ID", "Serie"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -62,6 +78,11 @@ public class ExcluiCacamba extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCacamba.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaCacambaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCacamba);
@@ -114,6 +135,27 @@ public class ExcluiCacamba extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaCacambaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCacambaMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse registro?");
+        if(resposta == 0)
+        {
+            int linha = tabelaCacamba.getSelectedRow();
+            Integer id = (Integer)tabelaCacamba.getValueAt(linha, 0);
+            DAOCacamba remover = new DAOCacamba();
+            if(remover.removeCacamba(id))
+            {
+                JOptionPane.showMessageDialog(null, "Registro removido com sucesso!");
+                DefaultTableModel modeloRemoveLinha = (DefaultTableModel)tabelaCacamba.getModel(); 
+                modeloRemoveLinha.removeRow(tabelaCacamba.getSelectedRow());  
+                tabelaCacamba.setModel(modeloRemoveLinha);  
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro. Tente novamente.");
+            }
+        }
+    }//GEN-LAST:event_tabelaCacambaMouseClicked
 
     /**
      * @param args the command line arguments

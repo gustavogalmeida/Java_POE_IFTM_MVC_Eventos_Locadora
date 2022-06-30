@@ -89,4 +89,20 @@ public class DAOCacamba {
         }
             
     }
+    public boolean removeMotorista (Integer id){
+        conectar();
+        String sql = "DELETE FROM CACAMBA WHERE ID=?";
+        try{
+            comando = con.prepareStatement(sql);
+            comando.setInt(1, id);
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Erro ao excluir registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            fechar();
+        }
+        return false;
+    }
 }
