@@ -5,6 +5,7 @@
 package pacote.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pacote.DAO.DAOCliente;
 import pacote.dominio.Cliente;
@@ -20,6 +21,16 @@ public class ExcluiCliente extends javax.swing.JFrame {
      */
     public ExcluiCliente() {
         initComponents();
+        DAOCliente dadosCliente = new DAOCliente();
+        ArrayList<Cliente> listaPessoas = new ArrayList();
+        listaPessoas = dadosCliente.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
+        for(Cliente cliente : listaPessoas)
+        {
+            Object[] dados = {cliente.getId(), cliente.getNome()};
+            modelo.addRow(dados);
+        }
         
     }
 
@@ -45,14 +56,14 @@ public class ExcluiCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Endereço", "Sexo", "Observações"
+                "ID", "Nome"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -61,6 +72,11 @@ public class ExcluiCliente extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCliente);
@@ -121,6 +137,27 @@ public class ExcluiCliente extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse registro?");
+        if(resposta == 0)
+        {
+            int linha = tabelaCliente.getSelectedRow();
+            Integer id = (Integer)tabelaCliente.getValueAt(linha, 0);
+            DAOCliente remover = new DAOCliente();
+            if(remover.removeCliente(id))
+            {
+                JOptionPane.showMessageDialog(null, "Registro removido com sucesso!");
+                DefaultTableModel modeloRemoveLinha = (DefaultTableModel)tabelaCliente.getModel(); 
+                modeloRemoveLinha.removeRow(tabelaCliente.getSelectedRow());  
+                tabelaCliente.setModel(modeloRemoveLinha);  
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro. Tente novamente.");
+            }
+        }
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
      * @param args the command line arguments
