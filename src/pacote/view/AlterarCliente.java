@@ -5,6 +5,7 @@
 package pacote.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pacote.DAO.DAOCliente;
 import pacote.dominio.Cliente;
@@ -20,6 +21,23 @@ public class AlterarCliente extends javax.swing.JFrame {
      */
     public AlterarCliente() {
         initComponents();
+        DAOCliente dadosCliente = new DAOCliente();
+        ArrayList<Cliente> listaCliente = new ArrayList();
+        listaCliente = dadosCliente.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
+        for(Cliente cliente : listaCliente)
+        {
+            Object[] dados = {
+                cliente.getId(), 
+                cliente.getNome(),
+                cliente.getEndereco(),
+                cliente.getSexo(),
+                cliente.getObs()
+            }; 
+
+            modelo.addRow(dados);
+        }
         
     }
 
@@ -45,14 +63,14 @@ public class AlterarCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Endereço", "Sexo", "Observações"
+                "id", "Nome", "Endereço", "Sexo", "Observações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -61,6 +79,11 @@ public class AlterarCliente extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCliente);
@@ -121,6 +144,22 @@ public class AlterarCliente extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente atualizar esse registro?");
+        if(resposta == 0)
+        {
+            Cliente cliente = new Cliente();
+            int linha = tabelaCliente.getSelectedRow();
+            cliente.setId(Integer.parseInt(tabelaCliente.getValueAt(linha, 0).toString()));
+            cliente.setNome(tabelaCliente.getValueAt(linha, 1).toString());
+            cliente.setEndereco(tabelaCliente.getValueAt(linha, 2).toString());
+            cliente.setSexo(tabelaCliente.getValueAt(linha, 3).toString());
+            cliente.setObs(tabelaCliente.getValueAt(linha, 4).toString());
+            new FormCliente(cliente).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
      * @param args the command line arguments

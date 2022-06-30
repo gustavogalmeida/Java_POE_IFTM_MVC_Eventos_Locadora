@@ -20,6 +20,23 @@ public class AlterarMotorista extends javax.swing.JFrame {
      */
     public AlterarMotorista() {
         initComponents();
+        DAOMotorista dadosMotorista = new DAOMotorista();
+        ArrayList<Motorista> listaMotorista = new ArrayList();
+        listaMotorista = dadosMotorista.selecionarTodosRegistros();
+        //criando um modelo para a JTable
+        DefaultTableModel modelo = (DefaultTableModel) tabelaMotorista.getModel();
+        for(Motorista motorista : listaMotorista)
+        {
+            Object[] dados = {
+                motorista.getId(), 
+                motorista.getNome(),
+                motorista.getCnh(),
+                motorista.getPlaca(),
+                motorista.getSexo()
+            }; 
+
+            modelo.addRow(dados);
+        }
         
     }
 
@@ -56,14 +73,14 @@ public class AlterarMotorista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CNH", "Placa", "Sexo"
+                "id", "Nome", "CNH", "Placa", "Sexo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -72,6 +89,11 @@ public class AlterarMotorista extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaMotorista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMotoristaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaMotorista);
@@ -123,6 +145,10 @@ public class AlterarMotorista extends javax.swing.JFrame {
         t.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tabelaMotoristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMotoristaMouseClicked
+        
+    }//GEN-LAST:event_tabelaMotoristaMouseClicked
 
     /**
      * @param args the command line arguments
