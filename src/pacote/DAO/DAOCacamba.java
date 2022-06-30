@@ -2,10 +2,13 @@ package pacote.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import pacote.DAO.FabricaConexao;
 import pacote.dominio.Cacamba;
+import pacote.DAO.DAOCacamba;
 
 
 /**
@@ -55,5 +58,36 @@ public class DAOCacamba {
             fechar();
         }
         return false;
+    }
+    public  ArrayList<Cacamba> selecionarTodosRegistros()
+    {
+        conectar();
+        //interface utilizada pra guardar dados vindos de um banco de dados
+        ResultSet rs;
+        String sql = "SELECT * FROM CACAMBA";
+
+        ArrayList<Cacamba> listaCacamba = new ArrayList();
+        try{
+            comando = con.prepareStatement(sql);
+            rs = comando.executeQuery();
+            while(rs.next())
+            {
+                Cacamba cacamba = new Cacamba();
+                cacamba.setTamanho(rs.getString("TAMANHO"));
+                cacamba.setNserie(rs.getString("NSERIE"));
+                cacamba.setLocada(rs.getBoolean("LOCADA"));
+                cacamba.setValor(rs.getFloat("VALOR"));
+                cacamba.setId(rs.getInt("ID"));
+                listaCacamba.add(cacamba);
+            }
+            fechar();
+            return listaCacamba;
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, "Erro ao buscar registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+            fechar();
+            return null;
+        }
+            
     }
 }

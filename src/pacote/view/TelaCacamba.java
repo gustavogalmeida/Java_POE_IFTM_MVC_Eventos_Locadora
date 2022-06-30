@@ -38,9 +38,9 @@ public class TelaCacamba extends javax.swing.JFrame {
         txtSerie = new javax.swing.JTextField();
         checkLocada = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
@@ -70,14 +70,19 @@ public class TelaCacamba extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 3, 3, 0));
 
-        jButton1.setText("Listar");
-        jPanel2.add(jButton1);
+        btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnListar);
 
-        jButton3.setText("Alterar");
-        jPanel2.add(jButton3);
+        btnAlterar.setText("Alterar");
+        jPanel2.add(btnAlterar);
 
-        jButton2.setText("Excluir");
-        jPanel2.add(jButton2);
+        btnExcluir.setText("Excluir");
+        jPanel2.add(btnExcluir);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +212,12 @@ public class TelaCacamba extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        ListarCacamba l = new ListarCacamba();
+        l.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnListarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,14 +255,14 @@ public class TelaCacamba extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JCheckBox checkLocada;
     private javax.swing.JComboBox<String> comboTamanho;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

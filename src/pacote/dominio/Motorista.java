@@ -11,6 +11,15 @@ public class Motorista {
     private String cnh;
     private String placa;
     private String sexo;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSexo() {
         return sexo;

@@ -9,7 +9,16 @@ public class Cacamba {
     private String nserie;
     private float valor;
     private boolean locada;
+    private int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getTamanho() {
         return tamanho;
     }

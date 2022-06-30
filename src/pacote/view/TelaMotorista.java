@@ -68,6 +68,11 @@ public class TelaMotorista extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridLayout(1, 3, 3, 3));
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnListar);
 
         btnAlterar.setText("Alterar");
@@ -257,6 +262,12 @@ public class TelaMotorista extends javax.swing.JFrame {
             limparCampos();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        ListarMotorista l = new ListarMotorista();
+        l.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnListarActionPerformed
 
     /**
      * @param args the command line arguments
