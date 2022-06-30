@@ -4,7 +4,9 @@
  */
 package pacote.view;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import pacote.DAO.DAOCacamba;
 import pacote.dominio.Cacamba;
 
@@ -17,8 +19,17 @@ public class FormCacamba extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public FormCacamba() {
+    public FormCacamba (){
+         initComponents();   
+    }
+    public FormCacamba(Cacamba cacamba) {
         initComponents();
+        comboTamanho.setSelectedItem (cacamba.getTamanho());
+        txtSerie.setText(cacamba.getNserie());
+        float auxValor = cacamba.getValor();
+        String strValor = auxValor+"";
+        txtValor.setText(strValor);
+        checkLocada.setSelected(cacamba.isLocada());
     }
 
     /**
