@@ -30,6 +30,9 @@ public class FormCacamba extends javax.swing.JFrame {
         String strValor = auxValor+"";
         txtValor.setText(strValor);
         checkLocada.setSelected(cacamba.isLocada());
+        int auxID  = cacamba.getId();
+        String strID = auxID+"";
+        txtId.setText(strID);
     }
 
     /**
@@ -172,7 +175,7 @@ public class FormCacamba extends javax.swing.JFrame {
         Cacamba cacamba = new Cacamba();
         cacamba.setTamanho(comboTamanho.getSelectedItem().toString());
         cacamba.setNserie(txtSerie.getText());
-        cacamba.setValor(Float.parseFloat(txtValor.getText().toString()));
+        cacamba.setValor(Float.parseFloat(txtValor.getText()));
         cacamba.setLocada(checkLocada.isSelected());
         cacamba.setId(Integer.parseInt(txtId.getText()));
         
