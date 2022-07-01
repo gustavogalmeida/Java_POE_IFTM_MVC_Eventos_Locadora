@@ -106,4 +106,25 @@ public class DAOMotorista {
         }
         return false;
     }
+    public boolean alteraMotorista(Motorista motorista){
+         conectar();
+         String sql = "UPDATE MOTORISTA SET NOME = ?, CNH = ?, PLACA = ?, SEXO = ? "
+                 + "WHERE ID=?";
+         try{
+            comando = con.prepareStatement(sql);
+            comando.setString(1, motorista.getNome());
+            comando.setString(2, motorista.getCnh());
+            comando.setString(3, motorista.getPlaca());
+            comando.setString(4, motorista.getSexo());
+            comando.setInt(5, motorista.getId());
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Erro ao atualizar registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            fechar();
+        }
+         return false;
+    }
 }

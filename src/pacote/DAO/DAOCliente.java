@@ -104,4 +104,25 @@ public class DAOCliente {
         }
         return false;
     }
+    public boolean alteraCliente(Cliente cliente){
+         conectar();
+         String sql = "UPDATE CLIENTE SET NOME = ?, ENDERECO = ?, SEXO = ?, OBS = ? "
+                 + "WHERE ID=?";
+         try{
+            comando = con.prepareStatement(sql);
+            comando.setString(1, cliente.getNome());
+            comando.setString(2, cliente.getEndereco());
+            comando.setString(3, cliente.getSexo());
+            comando.setString(4, cliente.getObs());
+            comando.setInt(5, cliente.getId());
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException e){
+              JOptionPane.showMessageDialog(null, "Erro ao atualizar registro."+e.getMessage(), 
+                    "Erro", JOptionPane.ERROR_MESSAGE, null);
+        }finally{
+            fechar();
+        }
+         return false;
+    }
 }

@@ -5,6 +5,7 @@
 package pacote.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pacote.DAO.DAOMotorista;
 import pacote.dominio.Motorista;
@@ -147,7 +148,19 @@ public class AlterarMotorista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void tabelaMotoristaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMotoristaMouseClicked
-        
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente atualizar esse registro?");
+        if(resposta == 0)
+        {
+            Motorista motorista = new Motorista();
+            int linha = tabelaMotorista.getSelectedRow();
+            motorista.setId(Integer.parseInt(tabelaMotorista.getValueAt(linha, 0).toString()));
+            motorista.setNome(tabelaMotorista.getValueAt(linha, 1).toString());
+            motorista.setCnh(tabelaMotorista.getValueAt(linha, 2).toString());
+            motorista.setPlaca(tabelaMotorista.getValueAt(linha, 3).toString());
+            motorista.setSexo(tabelaMotorista.getValueAt(linha, 4).toString());
+            new FormMotorista(motorista).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_tabelaMotoristaMouseClicked
 
     /**

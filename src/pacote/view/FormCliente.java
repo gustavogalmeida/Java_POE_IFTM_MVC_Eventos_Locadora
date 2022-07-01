@@ -4,6 +4,8 @@
  */
 package pacote.view;
 
+import javax.swing.JOptionPane;
+import pacote.DAO.DAOCliente;
 import pacote.dominio.Cliente;
 
 /**
@@ -55,6 +57,7 @@ public class FormCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnAtu = new javax.swing.JButton();
@@ -93,8 +96,10 @@ public class FormCliente extends javax.swing.JFrame {
 
         jLabel2.setText("Nome:");
 
+        buttonGroup1.add(btnFem);
         btnFem.setText("Feminino");
 
+        buttonGroup1.add(btnMas);
         btnMas.setText("Masculino");
 
         jLabel4.setText("Sexo:");
@@ -197,28 +202,32 @@ public class FormCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtuActionPerformed
-        /*
-        Cacamba cacamba = new Cacamba();
-        cacamba.setTamanho(comboTamanho.getSelectedItem().toString());
-        cacamba.setNserie(txtSerie.getText());
-        cacamba.setValor(Float.parseFloat(txtValor.getText()));
-        cacamba.setLocada(checkLocada.isSelected());
-        cacamba.setId(Integer.parseInt(txtId.getText()));
+        Cliente cliente = new Cliente();
+        cliente.setNome(txtNome.getText());
+        cliente.setEndereco(txtEndereco.getText());
+        String auxSexo ="";
+        if (btnFem.isSelected()){
+            auxSexo = "Feminino";
+        } else if (btnMas.isSelected()){
+            auxSexo = "Masculino";
+        }
+        cliente.setSexo(auxSexo);
+        cliente.setObs(txtObs.getText());
+        cliente.setId(Integer.parseInt(txtId.getText()));
 
-        DAOCacamba atualizar = new DAOCacamba();
-        if(atualizar.alteraCacamba(cacamba))
+        DAOCliente atualizar = new DAOCliente();
+        if(atualizar.alteraCliente(cliente))
         {
             JOptionPane.showMessageDialog(null, "Registro Atualizado com Sucesso.");
             dispose();
-            new AlterarCacamba().setVisible(true);
+            new AlterarCliente().setVisible(true);
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar registro");
             dispose();
-            new AlterarCacamba().setVisible(true);
+            new AlterarCliente().setVisible(true);
         }
-        */
     }//GEN-LAST:event_btnAtuActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -267,6 +276,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnFem;
     private javax.swing.JRadioButton btnMas;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

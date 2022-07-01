@@ -5,6 +5,10 @@
 
 package pacote.view;
 
+import javax.swing.JOptionPane;
+import pacote.DAO.DAOMotorista;
+import pacote.dominio.Motorista;
+
 /**
  *
  * @author Gustavo Almeida
@@ -14,6 +18,32 @@ public class FormMotorista extends javax.swing.JFrame {
     /** Creates new form FormMotorista */
     public FormMotorista() {
         initComponents();
+    }
+    public FormMotorista(Motorista motorista) {
+        initComponents();
+        String strid;
+        int auxID = motorista.getId();
+        strid=auxID+"";
+        txtId.setText(strid);
+        txtNome.setText(motorista.getNome());
+        txtPlaca.setText(motorista.getPlaca());
+        String auxCNH=motorista.getCnh();
+        
+        if("B".equals(auxCNH)){
+            checkB.setSelected(true);
+        } else if ("C".equals(auxCNH)){
+            checkC.setSelected(true);
+        } else if ("D".equals(auxCNH)){
+            checkD.setSelected(true);
+        } else if ("E".equals(auxCNH)){
+            checkE.setSelected(true);
+        }
+        String auxSexo=motorista.getSexo();
+        if ("Masculino".equals(auxSexo)){
+            btnMas.setSelected(true);
+        } else if ("Feminino".equals(auxSexo)){
+            btnFem.setSelected(true);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -25,12 +55,53 @@ public class FormMotorista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        sex = new javax.swing.ButtonGroup();
+        cnh = new javax.swing.ButtonGroup();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        checkB = new javax.swing.JCheckBox();
+        checkC = new javax.swing.JCheckBox();
+        checkD = new javax.swing.JCheckBox();
+        checkE = new javax.swing.JCheckBox();
+        txtPlaca = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        btnFem = new javax.swing.JRadioButton();
+        btnMas = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         btnAtu = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setText("Nome:");
+
+        cnh.add(checkB);
+        checkB.setText("B");
+
+        cnh.add(checkC);
+        checkC.setText("C");
+
+        cnh.add(checkD);
+        checkD.setText("D");
+
+        cnh.add(checkE);
+        checkE.setText("E");
+
+        jLabel3.setText("Categoria CNH:");
+
+        jLabel4.setText("Placa Caminhão:");
+
+        jLabel5.setText("Sexo:");
+
+        sex.add(btnFem);
+        btnFem.setText("Feminino");
+
+        sex.add(btnMas);
+        btnMas.setText("Masculino");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -50,27 +121,89 @@ public class FormMotorista extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(133, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnMas, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFem))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(checkB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(btnAtu, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGap(168, 168, 168)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(130, 130, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(254, Short.MAX_VALUE)))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnAtu))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkE)
+                    .addComponent(checkD)
+                    .addComponent(checkC)
+                    .addComponent(checkB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMas)
+                    .addComponent(btnFem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtu)
+                    .addComponent(btnVoltar)))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(52, 52, 52)
+                    .addComponent(jLabel2)
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel3)
+                    .addGap(24, 24, 24)
+                    .addComponent(jLabel4)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel5)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,12 +211,15 @@ public class FormMotorista extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -91,32 +227,46 @@ public class FormMotorista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtuActionPerformed
-        /*
-        Cacamba cacamba = new Cacamba();
-        cacamba.setTamanho(comboTamanho.getSelectedItem().toString());
-        cacamba.setNserie(txtSerie.getText());
-        cacamba.setValor(Float.parseFloat(txtValor.getText()));
-        cacamba.setLocada(checkLocada.isSelected());
-        cacamba.setId(Integer.parseInt(txtId.getText()));
+        Motorista motorista = new Motorista();
+        motorista.setNome(txtNome.getText());
+        String CNH = "";
+        String sexo = "";
+        if (checkB.isSelected()){
+            CNH = "B";
+        } else if (checkC.isSelected()){
+            CNH = "C";
+        } else if (checkD.isSelected()){
+            CNH = "D";
+        } else if (checkE.isSelected()){
+            CNH = "E";
+        }     
+        motorista.setCnh(CNH);
+        motorista.setPlaca(txtPlaca.getText());
+        if (btnFem.isSelected()){
+            sexo = "Feminino";
+        } else {
+            sexo = "Masculino";
+        }
+        motorista.setSexo(sexo);
+        motorista.setId(Integer.parseInt(txtId.getText()));
 
-        DAOCacamba atualizar = new DAOCacamba();
-        if(atualizar.alteraCacamba(cacamba))
+        DAOMotorista atualizar = new DAOMotorista();
+        if(atualizar.alteraMotorista(motorista))
         {
             JOptionPane.showMessageDialog(null, "Registro Atualizado com Sucesso.");
             dispose();
-            new AlterarCacamba().setVisible(true);
+            new AlterarMotorista().setVisible(true);
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Erro ao Atualizar registro");
             dispose();
-            new AlterarCacamba().setVisible(true);
+            new AlterarMotorista().setVisible(true);
         }
-        */
     }//GEN-LAST:event_btnAtuActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        AlterarCacamba a = new AlterarCacamba ();
+        AlterarMotorista a = new AlterarMotorista ();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -158,9 +308,24 @@ public class FormMotorista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtu;
+    private javax.swing.JRadioButton btnFem;
+    private javax.swing.JRadioButton btnMas;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JCheckBox checkB;
+    private javax.swing.JCheckBox checkC;
+    private javax.swing.JCheckBox checkD;
+    private javax.swing.JCheckBox checkE;
+    private javax.swing.ButtonGroup cnh;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.ButtonGroup sex;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 
 }
